@@ -5,8 +5,13 @@ LDFLAGS += -Wl,--gc-sections
 
 THISDIR = $(shell pwd)
 
-all: config_test
+all: extract_test config_test
 	$(MAKE) -C $(SRC_NAME)
+
+extract_test:
+	( if [ ! -d $(SRC_NAME) ]; then \
+		tar xvf $(SRC_NAME).tar.bz2 ; \
+	fi )
 
 config_test:
 	( if [ -f ./config_done ]; then \
@@ -33,11 +38,8 @@ configure:
 	)
 
 clean:
-	if [ -f $(SRC_NAME)/Makefile ] ; then \
-		$(MAKE) -C $(SRC_NAME) distclean ; \
-	fi ; \
+	rm -rf $(SRC_NAME)
 	rm -f config_done
-
 romfs:
 	mkdir -p $(ROMFSDIR)/usr/lib/xtables
 	$(ROMFSINST) $(THISDIR)/$(SRC_NAME)/iptables/xtables-legacy-multi /bin/xtables-multi
