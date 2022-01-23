@@ -1,4 +1,4 @@
-SRC_NAME=nfs-utils-1.2.8
+SRC_NAME=nfs-utils-2.5.3
 
 CFLAGS += -ffunction-sections -fdata-sections -fvisibility=hidden
 LDFLAGS += -Wl,--gc-sections
@@ -15,7 +15,7 @@ config_test:
 
 configure:
 	( cd $(SRC_NAME) && \
-	./autogen.sh ; \
+	sh ./autogen.sh ; \
 	knfsd_cv_bsd_signals=no \
 	PKG_CONFIG_PATH=$(STAGEDIR)/lib/pkgconfig \
 	./configure \
@@ -39,7 +39,7 @@ configure:
 	)
 
 clean:
-	if [ -f $(SRC_NAME1)/Makefile ] ; then \
+	if [ -f $(SRC_NAME)/Makefile ] ; then \
 		$(MAKE) -C $(SRC_NAME) distclean ; \
 	fi; \
 	rm -f config_done
