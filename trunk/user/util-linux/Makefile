@@ -1,5 +1,5 @@
-SRC_NAME=util-linux-2.33.1
-SRC_URL=https://www.kernel.org/pub/linux/utils/util-linux/v2.33/util-linux-2.33.1.tar.xz
+SRC_NAME=util-linux-2.36.1
+SRC_URL=https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-2.36.1.tar.xz
 
 THISDIR = $(shell pwd)
 
@@ -30,6 +30,7 @@ config_test:
 
 configure:
 	( cd $(SRC_NAME) ; \
+	./autogen.sh ; \
 	PKG_CONFIG_PATH=$(STAGEDIR)/lib/pkgconfig \
 	scanf_cv_type_modifier=no \
 	./configure \
