@@ -2136,13 +2136,22 @@ nf_values_hook(int eid, webs_t wp, int argc, char **argv)
 	return 0;
 }
 
-static int
-ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv) 
+static int ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv) 
 {
 #if defined(UTL_HDPARM)
 	int found_utl_hdparm = 1;
 #else
 	int found_utl_hdparm = 0;
+#endif
+#if defined(APP_VPNSVR)
+	int found_app_vpnsvr = 1;
+#else
+	int found_app_vpnsvr = 0;
+#endif
+#if defined(APP_VPNCLI)
+	int found_app_vpncli = 1;
+#else
+	int found_app_vpncli = 0;
 #endif
 #if defined(APP_OPENVPN)
 	int found_app_ovpn = 1;
@@ -2387,6 +2396,8 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 
 	websWrite(wp,
 		"function found_utl_hdparm() { return %d;}\n"
+		"function found_app_vpnsvr() { return %d;}\n"
+		"function found_app_vpncli() { return %d;}\n"
 		"function found_app_ovpn() { return %d;}\n"
 		"function found_app_dlna() { return %d;}\n"
 		"function found_app_ffly() { return %d;}\n"
@@ -2408,6 +2419,8 @@ ej_firmware_caps_hook(int eid, webs_t wp, int argc, char **argv)
 		"function found_app_xupnpd() { return %d;}\n"
 		"function found_app_mentohust() { return %d;}\n",
 		found_utl_hdparm,
+		found_app_vpnsvr,
+		found_app_vpncli,
 		found_app_ovpn,
 		found_app_dlna,
 		found_app_ffly,
