@@ -590,6 +590,9 @@ start_services_once(int is_ap_mode)
 #if defined(APP_MENTOHUST)
 	start_mentohust();
 #endif
+	system("/usr/bin/iappd.sh restart");
+	system("modprobe xt_TPROXY");
+	system("/usr/bin/iappd.sh test");
 	return 0;
 }
 
