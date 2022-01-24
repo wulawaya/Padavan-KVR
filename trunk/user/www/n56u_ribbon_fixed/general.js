@@ -1327,7 +1327,7 @@ function removeUselessChars(str) {
     str = str.replace(/\t/g, "\\t");
     str = str.replace(/("")+/g, "\"\"");
     str = str.replace(/\'/g, "&#39;");
-    str = str.replace(/ /g, "&nbsp;");
+    str = str.replace(/ /g, "");
     str = str.replace(/</g, "&lt;");
     str = str.replace(/>/g, "&gt;");
     return str;

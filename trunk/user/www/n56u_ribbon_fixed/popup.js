@@ -2,21 +2,6 @@ var winH,winW;
 
 <% get_flash_time(); %>
 
-function IsPC() {
-	var userAgentInfo = navigator.userAgent;
-	var Agents = ["Android", "iPhone",
-		"SymbianOS", "Windows Phone",
-		"iPad", "iPod"];
-	var flag = true;
-	for (var v = 0; v < Agents.length; v++) {
-		if (userAgentInfo.indexOf(Agents[v]) > 0) {
-			flag = false;
-			break;
-		}
-	}
-	return flag;
-}
-
 function winW_H() {
 	if (IsPC()) {
 		if (parseInt(navigator.appVersion) > 3) {
@@ -87,8 +72,8 @@ function showLoading(seconds, flag){
 
 	winW_H();
 	var blockmarginTop = (window.screen.height - 114) / 2;
-	/*var sheight = document.documentElement.scrollHeight;
-	var cheight = document.documentElement.clientHeight*/
+	//var sheight = document.documentElement.scrollHeight;
+	//var cheight = document.documentElement.clientHeight
 
 	/*if (IsPC())
 		blockmarginTop = (navigator.userAgent.indexOf("Safari") >= 0) ? (sheight - cheight <= 0) ? 200 : sheight - cheight + 200 : document.documentElement.scrollTop + 200;
@@ -98,11 +83,11 @@ function showLoading(seconds, flag){
 	//Lock modified it for Safari4 display issue.
 	$("loadingBlock").style.marginTop = blockmarginTop+"px";
 	if (IsPC()) {
-		$("Loading").style.width = "100%";
-		$("Loading").style.height = "100%";
+	    $("Loading").style.width = "100%";
+	    $("Loading").style.height = "100%";
 	} else {
-		$("Loading").style.width = winW+"px";
-		$("Loading").style.height = winH+"px";
+	    $("Loading").style.width = winW+"px";
+	    $("Loading").style.height = winH+"px";
 	}
 
 	loadingSeconds = seconds;

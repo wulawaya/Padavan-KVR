@@ -181,13 +181,6 @@ ifneq ($(STORAGE_ENABLED),y)
 	rm -rf $(INSTALLDIR)/www/images/AiDisk
 	rm -rf $(INSTALLDIR)/www/images/Tree
 endif
-ifeq ($(CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER),y)
-	rm -f $(INSTALLDIR)/www/vpnsrv.asp
-endif
-ifeq ($(CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT),y)
-	rm -f $(INSTALLDIR)/www/vpn_clients.asp
-	rm -f $(INSTALLDIR)/www/vpncli.asp
-endif
 ifneq ($(CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT),y)
 	rm -f $(INSTALLDIR)/www/scutclient.asp
 	rm -f $(INSTALLDIR)/www/scutclient_log.asp
@@ -205,6 +198,47 @@ ifneq ($(CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS),y)
 	rm -f $(INSTALLDIR)/www/Shadowsocks.asp
 	rm -f $(INSTALLDIR)/www/Shadowsocks_action.asp
 	rm -f $(INSTALLDIR)/www/Shadowsocks_log.asp
+endif
+
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_SERVER),y)
+	rm -f $(INSTALLDIR)/www/vpnsrv.asp
+endif
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_SOFTETHERVPN_CLIENT),y)
+	rm -f $(INSTALLDIR)/www/vpn_clients.asp
+	rm -f $(INSTALLDIR)/www/vpncli.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_ADBYBY),y)
+	rm -f $(INSTALLDIR)/www/Advanced_adbyby.asp
+	rm -f $(INSTALLDIR)/www/Ad_action.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_ALIDDNS),y)
+	rm -f $(INSTALLDIR)/www/Advanced_aliddns.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME),y)
+	rm -f $(INSTALLDIR)/www/Advanced_adguardhome.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_KOOLPROXY),y)
+	rm -f $(INSTALLDIR)/www/Advanced_koolproxy.asp
+	rm -f $(INSTALLDIR)/www/Kp_action.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_CADDY),y)
+	rm -f $(INSTALLDIR)/www/Advanced_caddy.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_WYY),y)
+	rm -f $(INSTALLDIR)/www/Advanced_wyy.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_ZEROTIER),y)
+	rm -f $(INSTALLDIR)/www/Advanced_zerotier.asp
+endif
+ifeq ($(CONFIG_FIRMWARE_INCLUDE_FRPC)_$(CONFIG_FIRMWARE_INCLUDE_FRPS), n_n)
+	rm -f $(INSTALLDIR)/www/Advanced_frp.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_NVPPROXY),y)
+	rm -f $(INSTALLDIR)/www/Advanced_nvpproxy.asp
+endif
+ifneq ($(CONFIG_FIRMWARE_INCLUDE_NPC),y)
+	rm -f $(INSTALLDIR)/www/Advanced_npc.asp
+	rm -f $(INSTALLDIR)/www/Advanced_npc_log.asp
 endif
 
 clean:
